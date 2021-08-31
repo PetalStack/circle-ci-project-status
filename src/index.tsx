@@ -20,6 +20,8 @@ export const StatusCircleCI: FC<Props> = ({project, token }) => {
   const [status, setStatus] = useState<any>("success");
 
   useEffect(() => {
+    getStatusCI(project, token);
+
     setInterval(() => {
       getStatusCI(project, token);
     }, 300000)
@@ -54,6 +56,8 @@ export const StatusCircleCI: FC<Props> = ({project, token }) => {
         }
         setStatus(`${latest_build['status']}`);
         setData(data);
+        console.log("Publish");
+        
 
       })
       .catch((error) => {
