@@ -11,25 +11,17 @@ export const Button = styled.div`
 export const Wrapper = styled.div`
 
   margin: 0.8rem;
-  max-width: auto;
-  max-height: auto;
-  /* background: #f4f5f8; */
+  max-width: 400px;
+  max-height: 650px;
   border: 1px solid #BDBEC0; 
   border-radius: 6px;
   padding: 20px;
   padding-top: 0rem;
   padding-right: 0rem;
-  /* & > h2 {
-    font-weight: 300;
-    text-transform: uppercase;
-    color: black;
-  } */
-
   box-shadow: 2px 2px #8888;
 
   & > hr {
     width: 100%;
-    /* margin-top: 0.4rem; */
     margin-bottom: 2.0rem;
     border: 0;
     border-top-width: 1px;
@@ -41,8 +33,7 @@ export const Wrapper = styled.div`
     display: flex;
   flex: 1;
   flex-direction: row;
-    /* line-height: 2.7rem; */
-    /* font-weight: 700; */
+
     text-transform: uppercase;
     color: black;
     padding-top: -2.0rem;
@@ -91,22 +82,13 @@ export const StatusBuild = styled.div<StyleProps>`
 }
 `;
 
-
 export const InformBuild = styled.div`
     padding: 1.0rem;
-    /* font-weight: 600;
-    font-size: 1.6rem;
-    line-height: 2.4rem; */
-    /* align-self: center; */
-
     & > div{
       + div {
-        /* background-color: black; */
         padding: 0.5rem
       }
-    }
-    
-
+    }   
 `;
 
 
@@ -116,8 +98,6 @@ export const Header = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  /* background-color: rgba(76, 175, 80, 0.3);  */
-
 `;
 
 export const Inform = styled.div`
@@ -125,10 +105,6 @@ export const Inform = styled.div`
     font-weight: 600;
     font-size: 1.6rem;
     line-height: 2.4rem; 
-
-    & > div{
-    
-    }
 `;
 
 export const Text = styled.div`
@@ -137,15 +113,6 @@ export const Text = styled.div`
     font-size: 1.0rem;
     line-height: 1.4rem;
     padding-right: 0.5rem;
-`;
-
-
-export const MedianTime = styled.div`
-
-`;
-
-export const Status = styled.div`
-
 `;
 
 export const Bar = styled.div`
@@ -163,29 +130,10 @@ export const WrapperBar =styled.div`
 `;
 
 export const URL = styled.div`
-    /* font-size: 1.0rem;
-    line-height: 1.4rem; */
     cursor: pointer;
     &:hover {
     text-decoration-line: underline;
     color: black;
   }
-
 `;
 
-// export const Title = styled.link`
-//   /* font-weight: 600;
-//   font-size: 1.6rem;
-//   line-height: 2.4rem; */
-//   color:red;
-//   &:hover {
-//     text-decoration-line: underline;
-//     color:black};
-//   }
-
-//   @media screen and (max-width: 600px) {
-//     font-size: 1.4rem;
-//     line-height: 2.1rem;
-//   }
-// `;
- 

@@ -14,7 +14,7 @@ export interface Props extends HTMLAttributes<HTMLDivElement> {
   children?: ReactChild;
 }
 
-export const StatusCircleCI: FC<Props> = ({project, token }) => {
+export const StatusCircleCI: FC<Props> = ({project, token, url }) => {
 
   const [data, setData] = useState<any>([]);
   const [status, setStatus] = useState<any>("success");
@@ -29,17 +29,17 @@ export const StatusCircleCI: FC<Props> = ({project, token }) => {
 
 
   const getStatusCI = async (project: any, token: String) => {
-
     
     fetch(`https://circleci.com/api/v1/project/${project['user']}/${project['repo']}/tree/${project['branch']}?circle-token=${token}`, {
       method: 'GET'
     })
       .then(response => {
         return response.json();
+        
         // return response
       })
       .then(response => {
-
+               
         const latest_build = response.filter((x:any) => { return x.status !== "queued" })[0]
         const build_id = (`${latest_build['branch']}, build ${latest_build['build_num']}`)
 
@@ -51,13 +51,11 @@ export const StatusCircleCI: FC<Props> = ({project, token }) => {
           state: `${latest_build['status']}`,
           widget_class: `${translate_status_to_class(latest_build['status'])}`,
           commit_body: latest_build['subject'],
-          job: `Last job: ${latest_build['build_parameters']['CIRCLE_JOB']}`,
+          job: `Last job: ${latest_build['workflows']['job_name']}`,
           author_name: latest_build['author_name']
         }
         setStatus(`${latest_build['status']}`);
-        setData(data);
-        console.log("Publish");
-        
+        setData(data);        
 
       })
       .catch((error) => {
@@ -65,10 +63,7 @@ export const StatusCircleCI: FC<Props> = ({project, token }) => {
       });
   }
 
-  const openLink = () => {
-    console.log("ddd");
-  }
-
+  const openLink = () => { console.log(url); }
 
   const calculate_time = (finished: any) => {
     const now: any = new Date();
@@ -125,7 +120,7 @@ export const StatusCircleCI: FC<Props> = ({project, token }) => {
       </S.Header>
       <S.Body>
         <S.Text>{data.commit_body} </S.Text>
-        <S.Text>{data.author_name}</S.Text>
+        <S.Text>Author: {data.author_name}</S.Text>
         <S.Text>Last Build: {data.time}</S.Text>
         <S.Text>{data.job}</S.Text>
       </S.Body>
